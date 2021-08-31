@@ -8,7 +8,7 @@ routes.get('/', (req: express.Request, res: express.Response): void => {
 });
 routes.get('*', (req: express.Request, res: express.Response): void => {
   res.send(
-    'Bad Route. Return to https://localhost3000 or enter a valid router.'
+    'Bad Route. Return to https://localhost3000 or enter a valid route.'
   );
 });
 
