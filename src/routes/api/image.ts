@@ -6,11 +6,11 @@ import logger from '../utils/logger';
 const image = express.Router();
 
 image.get(
-  '/',
+  '/image',
   logger,
   async (req: express.Request, res: express.Response): Promise<void> => {
     const file = req.query.file as string;
-    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.wdith}&${req.query.height}.jpg`;
+    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.wdith}X${req.query.height}.jpg`;
     const imagePath = `${config.ASSETS_FOLDER}/full/${file}.jpg`;
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);

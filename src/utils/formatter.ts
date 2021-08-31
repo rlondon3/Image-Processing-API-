@@ -7,7 +7,7 @@ const formatter = async (
   height: number
 ): Promise<void> => {
   const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
-  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}&${height}.jpg`;
+  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}X${height}.jpg`;
   try {
     await sharp(imagePath)
       .resize({ width, height, fit: 'contain' })
