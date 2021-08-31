@@ -7,5 +7,5 @@ const port = 3000;
 app.use('/', routes);
 
 app.listen(port, () => {
-    console.log(`Application has started at https://localhost${port}`);
+  console.log(`Application has started at https://localhost${port}`);
 });
