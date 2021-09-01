@@ -10,27 +10,29 @@ image.get(
   logger,
   async (req: express.Request, res: express.Response): Promise<void> => {
     const file = req.query.file as string;
-    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.wdith}X${req.query.height}.jpg`;
-    const imagePath = `${config.ASSETS_FOLDER}/full/${file}.jpg`;
+    const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
+    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.width}X${req.query.height}.jpg`;
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
 
-    const found = await imagePath;
-    const outputFileSent = await outputFile;
-
     try {
-      if (!found) {
-        res.send('File invalid!');
-      } else if (!outputFileSent) {
+      if (!imagePath) {
+        console.error('File invalid!');
+      } else if (!outputFile) {
         await formatter(file, width, height);
         res.status(200).sendFile(outputFile);
       }
       if (!width || !height) {
         res.statusCode = 400;
-        res.send('Error: width & height invalid.');
+        console.error('Error: width & height invalid.');
       } else if (isNaN(width) || isNaN(height)) {
         res.statusCode = 404;
-        res.send('Error: width & height values are invalid.');
+        console.error('Error: width & height values are invalid.');
+      } else {
+        {
+          await formatter(file, width, height);
+          res.status(200).sendFile(outputFile);
+        }
       }
     } catch (err) {
       console.error('Cannot get image location', err);
