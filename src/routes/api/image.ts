@@ -20,7 +20,6 @@ image.get(
         console.error('File invalid!');
       } else if (!outputFile) {
         await formatter(file, width, height);
-        res.status(200).sendFile(outputFile);
       }
       if (!width || !height) {
         res.statusCode = 400;
@@ -29,10 +28,7 @@ image.get(
         res.statusCode = 404;
         console.error('Error: width & height values are invalid.');
       } else {
-        {
-          await formatter(file, width, height);
-          res.status(200).sendFile(outputFile);
-        }
+        res.status(200).sendFile(outputFile);
       }
     } catch (err) {
       console.error('Cannot get image location', err);
