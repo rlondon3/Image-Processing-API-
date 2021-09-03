@@ -2,6 +2,7 @@ import express from 'express';
 import formatter from '../../utils/formatter';
 import config from '../../configuration';
 import logger from '../utils/logger';
+import fs from 'fs';
 
 const image = express.Router();
 
@@ -16,22 +17,24 @@ image.get(
     const height = parseInt(req.query.height as string);
 
     try {
-      if (!imagePath) {
-        console.error('File invalid!');
-      } else if (!outputFile) {
-        await formatter(file, width, height);
+      if (!imagePath || !width || !height) {
+        return res
+          .status(400)
+          .sendFile('Image name, width, and height required in the URL.');
       }
-      if (!width || !height) {
-        res.statusCode = 400;
-        console.error('Error: width & height invalid.');
-      } else if (isNaN(width) || isNaN(height)) {
-        res.statusCode = 404;
-        console.error('Error: width & height values are invalid.');
+      if (isNaN(width) || isNaN(height)) {
+        return res
+          .status(400)
+          .sendFile('Error: width & height values are invalid.');
+      }
+      if (fs.existsSync(imagePath)) {
+        await formatter(file, width, height);
+        return res.status(200).sendFile(outputFile);
       } else {
-        res.status(200).sendFile(outputFile);
+        res.status(404).send('Image not found!');
       }
     } catch (err) {
-      console.error('Cannot get image location', err);
+      console.error('Cannot get image!', err);
     }
   }
 );
