@@ -6,8 +6,8 @@ const formatter = async (
   width: number,
   height: number
 ): Promise<string> => {
-  const imagePath = `${config.ASSETS_FOLDER}/img/${file}.png`;
-  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}X${height}.png`;
+  const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
+  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}X${height}.jpg`;
 
   try {
     await sharp(imagePath)
