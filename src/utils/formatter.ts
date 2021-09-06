@@ -5,10 +5,10 @@ const formatter = async (
   file: string,
   width: number,
   height: number
-): Promise<void> => {
-  const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
-  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}X${height}.jpg`;
-  console.log(imagePath);
+): Promise<string> => {
+  const imagePath = `${config.ASSETS_FOLDER}/img/${file}.png`;
+  const outputPath = `${config.ASSETS_FOLDER}/thumb/${file}${width}X${height}.png`;
+
   try {
     await sharp(imagePath)
       .resize(width, height, { fit: sharp.fit.contain })
@@ -17,6 +17,7 @@ const formatter = async (
     console.error('Error with image formatting', err);
     throw err;
   }
+  return outputPath;
 };
 
 export default formatter;

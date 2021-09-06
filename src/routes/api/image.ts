@@ -11,8 +11,8 @@ image.get(
   logger,
   async (req: express.Request, res: express.Response): Promise<void> => {
     const file = req.query.file as string;
-    const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
-    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.width}X${req.query.height}.jpg`;
+    const imagePath = `${config.ASSETS_FOLDER}/img/${file}.png`;
+    const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.width}X${req.query.height}.png`;
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
 
