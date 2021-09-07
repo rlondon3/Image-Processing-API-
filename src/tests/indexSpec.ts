@@ -26,8 +26,10 @@ describe('Test for image endpoint', () => {
 });
 
 describe('Tests an invalid endpoint', () => {
-  it('sends an error message to the broswer', async () => {
-    const res = await request.get('/api/image');
-    expect(res.status).toBe(400);
+  it('sends an error message to the browser', async () => {
+    const res = await request.get(
+      '/api/image?file=china&width=200&height=200al'
+    );
+    expect(res.status).toBe(404);
   });
 });
