@@ -16,6 +16,9 @@ image.get(
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
 
+    let url = req.query;
+    //res.redirect('/api/image?file=china&width=200&height=200');
+
     try {
       if (!imagePath || !width || !height) {
         return res
@@ -36,6 +39,13 @@ image.get(
     } catch (err) {
       console.error('Cannot get image!', err);
     }
+    await res
+      .status(400)
+      .sendFile(
+        'Image name, width, and height required in the URL (e.g http://localhost:3000/api/image?file=china&width=200&height=200)'
+      );
+
+    return;
   }
 );
 
