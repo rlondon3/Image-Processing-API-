@@ -19,12 +19,22 @@ image.get(
     //res.redirect('/api/image?file=china&width=200&height=200');
 
     try {
+      if (!file) {
+        res.send('Enter a file name.');
+        return;
+      }
+
       if (!imagePath || !width || !height) {
         res.send('Image name, width, and height required in the URL.');
         return;
       }
       if (isNaN(width) || isNaN(height)) {
         res.send('Error: width & height values are invalid.');
+        return;
+      }
+      if (!fs.existsSync(outputFile)) {
+        res.status(404);
+        res.send('Invalid Url');
         return;
       }
       if (fs.existsSync(outputFile)) {

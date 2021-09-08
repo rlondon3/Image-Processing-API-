@@ -12,7 +12,7 @@ describe('test of image formatter', () => {
 
 describe('Test for API endpoint', () => {
   it('retrieves the main endpoint', async () => {
-    const res = await request.get('/');
+    const res = await request.get('/api');
     expect(res.status).toBe(200);
   });
 });
@@ -21,7 +21,6 @@ describe('Test for image endpoint', () => {
   it('retrieves the resized image endpoint', async () => {
     const res = await request.get('/api/image?file=china&width=200&height=200');
     expect(res.status).toBe(200);
-    return;
   });
 });
 
