@@ -88,7 +88,7 @@ describe('Tests an invalid endpoint', function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/api/image?file=river&width=200&height=200al')];
+                case 0: return [4 /*yield*/, request.get('/api/image?file=rivers&width=200&height=200')];
                 case 1:
                     res = _a.sent();
                     expect(res.status).toBe(404);

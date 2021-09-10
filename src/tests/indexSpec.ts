@@ -27,7 +27,7 @@ describe('Test for image endpoint', () => {
 describe('Tests an invalid endpoint', () => {
   it('sends an error message to the browser', async () => {
     const res = await request.get(
-      '/api/image?file=river&width=200&height=200al'
+      '/api/image?file=rivers&width=200&height=200'
     );
     expect(res.status).toBe(404);
   });

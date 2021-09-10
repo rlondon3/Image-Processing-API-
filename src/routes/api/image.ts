@@ -3,7 +3,6 @@ import formatter from '../../utils/formatter';
 import config from '../../configuration';
 import logger from '../utils/logger';
 import fs from 'fs';
-import imageExists from '../../utils/imageExists';
 
 const image = express.Router();
 
@@ -12,10 +11,8 @@ image.get(
   logger,
   async (req: express.Request, res: express.Response): Promise<void> => {
     const file = req.query.file as string;
-    const reg = [/^[A-Za-z]+$/];
     const imagePath = `${config.ASSETS_FOLDER}/img/${file}.jpg`;
     const outputFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.width}X${req.query.height}.jpg`;
-    const wrongFile = `${config.ASSETS_FOLDER}/thumb/${req.query.file}${req.query.width}X${req.query.height}.jpg`;
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
 
