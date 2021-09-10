@@ -16,12 +16,10 @@ image.get(
     const width = parseInt(req.query.width as string);
     const height = parseInt(req.query.height as string);
 
-    //res.redirect('/api/image?file=china&width=200&height=200');
-
     try {
       if (!file || !width || !height) {
         res.send(
-          'Url requires file, width, and height. Exampe: api/image?file=china&width=200&height=200'
+          'Url requires file, width, and height. Example: api/image?file=china&width=200&height=200'
         );
       } else if (width < 100 || height < 100) {
         res.send('Width and height must be over 100.');
