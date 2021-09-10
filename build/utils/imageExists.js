@@ -35,59 +35,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var formatter_1 = __importDefault(require("../../utils/formatter"));
-var configuration_1 = __importDefault(require("../../configuration"));
-var logger_1 = __importDefault(require("../utils/logger"));
-var fs_1 = __importDefault(require("fs"));
-var image = express_1.default.Router();
-image.get('/image', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var file, reg, imagePath, outputFile, wrongFile, width, height, err_1;
+var promises_1 = require("fs/promises");
+var fs_1 = require("fs");
+var imageExists = function (Path) { return __awaiter(void 0, void 0, void 0, function () {
+    var err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                file = req.query.file;
-                reg = [/^[A-Za-z]+$/];
-                imagePath = configuration_1.default.ASSETS_FOLDER + "/img/" + file + ".jpg";
-                outputFile = configuration_1.default.ASSETS_FOLDER + "/thumb/" + req.query.file + req.query.width + "X" + req.query.height + ".jpg";
-                wrongFile = configuration_1.default.ASSETS_FOLDER + "/thumb/" + req.query.file + req.query.width + "X" + req.query.height + ".jpg";
-                width = parseInt(req.query.width);
-                height = parseInt(req.query.height);
-                _a.label = 1;
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, promises_1.access)(Path, fs_1.constants.R_OK | fs_1.constants.W_OK)];
             case 1:
-                _a.trys.push([1, 8, , 9]);
-                if (!(!file || !width || !height)) return [3 /*break*/, 2];
-                res.send('Url requires file, width, and height. Exampe: api/image?file=china&width=200&height=200');
-                return [3 /*break*/, 7];
-            case 2:
-                if (!(width < 100 || height < 100)) return [3 /*break*/, 3];
-                res.send('Width and height must be over 100.');
-                return [3 /*break*/, 7];
-            case 3:
-                if (!fs_1.default.existsSync(outputFile)) return [3 /*break*/, 4];
-                return [2 /*return*/, res.status(200).sendFile(outputFile)];
-            case 4:
-                if (!fs_1.default.existsSync(imagePath)) return [3 /*break*/, 6];
-                return [4 /*yield*/, (0, formatter_1.default)(file, width, height)];
-            case 5:
                 _a.sent();
-                return [2 /*return*/, res.status(200).sendFile(outputFile)];
-            case 6:
-                res
-                    .status(404)
-                    .send('File does not exist. Please check the file name and try again.');
-                return [2 /*return*/];
-            case 7: return [3 /*break*/, 9];
-            case 8:
+                console.log('Path Exists!');
+                return [2 /*return*/, true];
+            case 2:
                 err_1 = _a.sent();
-                console.error('Cannot get image!', err_1);
-                return [3 /*break*/, 9];
-            case 9: return [2 /*return*/];
+                return [2 /*return*/, false];
+            case 3: return [2 /*return*/];
         }
     });
-}); });
-exports.default = image;
+}); };
+exports.default = imageExists;

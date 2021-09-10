@@ -47,7 +47,7 @@ describe('test of image formatter', function () {
     it('will return the thumb image', function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, expectAsync((0, formatter_1.default)('china', 200, 200)).toBeResolved()];
+                case 0: return [4 /*yield*/, expectAsync((0, formatter_1.default)('river', 200, 200)).toBeResolved()];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -74,7 +74,7 @@ describe('Test for image endpoint', function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/api/image?file=china&width=200&height=200')];
+                case 0: return [4 /*yield*/, request.get('/api/image?file=river&width=200&height=200')];
                 case 1:
                     res = _a.sent();
                     expect(res.status).toBe(200);
@@ -88,7 +88,7 @@ describe('Tests an invalid endpoint', function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/api/image?file=china&width=200&height=200al')];
+                case 0: return [4 /*yield*/, request.get('/api/image?file=river&width=200&height=200al')];
                 case 1:
                     res = _a.sent();
                     expect(res.status).toBe(404);

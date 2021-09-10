@@ -1,5 +1,6 @@
 import sharp from 'sharp';
 import config from '../configuration';
+import fs from 'fs';
 
 const formatter = async (
   file: string,
