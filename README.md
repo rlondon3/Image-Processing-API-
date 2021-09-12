@@ -6,7 +6,9 @@ ________________________________________________________________________________
 
 OVERVIEW
 ===============
-In total there are four images. Each image should be resized by designating the image name, width, and height in the url. Each resized image should be written to the assets/thumb folder of this project. Image names are bridge, building, mountains, and river. Each image is in jpg format. Example: api/image?file=building&width=200&height=200
+In total there are four images. Each image should be resized by designating the image name, width, and height in the url. Each resized image should be written to the assets/thumb folder of this project. Image names are bridge, building, mountains, and river. Each image is in jpg format. To resize a photo please use the example link below. 
+
+Example: api/image?file=building&width=200&height=200
 
 Endpoints
 ------------
