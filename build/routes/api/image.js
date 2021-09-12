@@ -46,22 +46,20 @@ var logger_1 = __importDefault(require("../utils/logger"));
 var fs_1 = __importDefault(require("fs"));
 var image = express_1.default.Router();
 image.get('/image', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var file, reg, imagePath, outputFile, wrongFile, width, height, err_1;
+    var file, imagePath, outputFile, width, height, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 file = req.query.file;
-                reg = [/^[A-Za-z]+$/];
                 imagePath = configuration_1.default.ASSETS_FOLDER + "/img/" + file + ".jpg";
                 outputFile = configuration_1.default.ASSETS_FOLDER + "/thumb/" + req.query.file + req.query.width + "X" + req.query.height + ".jpg";
-                wrongFile = configuration_1.default.ASSETS_FOLDER + "/thumb/" + req.query.file + req.query.width + "X" + req.query.height + ".jpg";
                 width = parseInt(req.query.width);
                 height = parseInt(req.query.height);
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 8, , 9]);
                 if (!(!file || !width || !height)) return [3 /*break*/, 2];
-                res.send('Url requires file, width, and height. Exampe: api/image?file=china&width=200&height=200');
+                res.send('Url requires file, width, and height. Example: api/image?file=china&width=200&height=200');
                 return [3 /*break*/, 7];
             case 2:
                 if (!(width < 100 || height < 100)) return [3 /*break*/, 3];

@@ -11,7 +11,7 @@ app.get('/', (req: express.Request, res: express.Response): void => {
 });
 
 app.listen(port, () => {
-  console.log(`Application has started at https://localhost${port}`);
+  console.log(`Application has started at http://localhost:${port}`);
 });
 
 export default app;

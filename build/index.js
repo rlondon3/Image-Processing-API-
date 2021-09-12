@@ -12,6 +12,6 @@ app.get('/', function (req, res) {
     res.send('Connected!');
 });
 app.listen(port, function () {
-    console.log("Application has started at https://localhost" + port);
+    console.log("Application has started at http://localhost:" + port);
 });
 exports.default = app;
